@@ -3,7 +3,6 @@ package com.example.crm.controller
 import com.example.crm.dto.LeadDto
 import com.example.crm.entity.Lead
 import com.example.crm.service.LeadService
-import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -18,8 +17,8 @@ class LeadController {
     fun getLeads() = leadService.getLeads()
 
     @PostMapping
-    fun save(@RequestBody @Valid leadDto: LeadDto): Lead {
-        return leadService.save(leadDto)
+    fun save(@RequestBody leadDto: LeadDto): Lead {
+        return leadService.saveLead(leadDto)
     }
 
     @GetMapping("/{id}")
@@ -30,5 +29,10 @@ class LeadController {
     @DeleteMapping("/{id}")
     fun deleteLead(@PathVariable id: Long) {
         leadService.deleteLead(id)
+    }
+
+    @PostMapping("/{id}/set-status")
+    fun setStatus(@PathVariable id: Long, @RequestParam status: String) {
+        leadService.setStatus(id, status)
     }
 }
