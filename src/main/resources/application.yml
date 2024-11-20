@@ -15,7 +15,7 @@ spring:
     schemas: public
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/SrpingBootDto
+    url: jdbc:postgresql://localhost:5432/crmdata
     username: postgres
     password: Matias2807gamer
     driverClassName: org.postgresql.Driver
